@@ -13,13 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Traduz o sistema legado do Banco Aurora para a interface {@link FonteDeBoletos}.
- * Converte texto separado por ';', centavos, datas ddMMyyyy e cedente/sacado
- * em objetos {@link Boleto} do nosso domínio (montados com o Builder).
- *
- * @note Papel no Padrão: Adapter (Object Adapter - por composição)
- */
+
 public class AdaptadorBancoAurora implements FonteDeBoletos {
 
     private static final DateTimeFormatter DATA = DateTimeFormatter.ofPattern("ddMMyyyy");
@@ -68,7 +62,6 @@ public class AdaptadorBancoAurora implements FonteDeBoletos {
         };
     }
 
-    /** O legado devolve o nome em CAIXA ALTA. */
     private String capitalizar(String nome) {
         StringBuilder sb = new StringBuilder();
         for (String parte : nome.toLowerCase().split(" ")) {

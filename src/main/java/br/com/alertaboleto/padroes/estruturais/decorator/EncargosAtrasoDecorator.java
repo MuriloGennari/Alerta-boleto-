@@ -6,11 +6,7 @@ import br.com.alertaboleto.util.Log;
 
 import java.time.LocalDate;
 
-/**
- * Adicional que acrescenta ao alerta a multa, os juros e o valor atualizado a pagar.
- *
- * @note Papel no Padrão: Concrete Decorator
- */
+
 public class EncargosAtrasoDecorator extends AlertaDecorator {
 
     private final CalculadoraEncargos.Encargos encargos;

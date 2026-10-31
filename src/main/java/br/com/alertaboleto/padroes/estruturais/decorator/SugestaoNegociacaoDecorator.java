@@ -5,12 +5,7 @@ import br.com.alertaboleto.util.Log;
 
 import java.time.LocalDate;
 
-/**
- * Adicional que orienta o titular conforme o tempo de atraso: atrasos longos
- * (mais de 30 dias) recebem sugestão de renegociação e aviso sobre negativação.
- *
- * @note Papel no Padrão: Concrete Decorator
- */
+
 public class SugestaoNegociacaoDecorator extends AlertaDecorator {
 
     private static final int DIAS_ATRASO_CRITICO = 30;

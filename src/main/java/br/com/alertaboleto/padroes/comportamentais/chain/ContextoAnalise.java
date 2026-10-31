@@ -4,11 +4,7 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Set;
 
-/**
- * Informações do titular que os verificadores da cadeia precisam consultar.
- *
- * @note Papel no Padrão: Classe de apoio (contexto/dados compartilhados entre os Handlers) da Chain of Responsibility
- */
+
 public class ContextoAnalise {
 
     private final String cpfTitular;

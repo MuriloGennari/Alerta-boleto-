@@ -1,11 +1,6 @@
 package br.com.alertaboleto.padroes.estruturais.decorator;
 
-/**
- * Alerta simples de texto livre, usado para confirmações (pagamento registrado,
- * contestação aberta). Também pode ser decorado, pois implementa {@link Alerta}.
- *
- * @note Papel no Padrão: Concrete Component (Decorator)
- */
+
 public class AlertaInformativo implements Alerta {
 
     private final String titulo;

@@ -1,11 +1,6 @@
 package br.com.alertaboleto.padroes.estruturais.adapter.externo;
 
-/**
- * Objeto de resposta da API do Banco Horizonte (fintech fictícia).
- * Campos em inglês, valor em {@code Double}, datas em texto ISO e status próprio.
- *
- * @note Papel no Padrão: Classe de apoio do Adaptee (formato de dados incompatível que o Adapter precisa traduzir)
- */
+
 public class CobrancaHorizonte {
 
     private final String chargeId;

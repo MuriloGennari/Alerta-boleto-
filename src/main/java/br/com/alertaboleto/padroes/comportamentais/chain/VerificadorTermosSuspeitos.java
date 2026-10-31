@@ -6,12 +6,7 @@ import br.com.alertaboleto.dominio.ResultadoAnalise;
 import java.text.Normalizer;
 import java.util.List;
 
-/**
- * Golpes comuns usam nomes que imitam órgãos públicos ou criam urgência
- * ("Regularização de CPF", "Receita", "Urgente", "Quitação de dívida"...).
- *
- * @note Papel no Padrão: Concrete Handler (Chain of Responsibility)
- */
+
 public class VerificadorTermosSuspeitos extends VerificadorRisco {
 
     private static final List<String> TERMOS = List.of(

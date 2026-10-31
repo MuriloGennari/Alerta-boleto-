@@ -3,11 +3,7 @@ package br.com.alertaboleto.padroes.criacionais.factorymethod;
 import br.com.alertaboleto.padroes.comportamentais.observer.EventoBoleto;
 import br.com.alertaboleto.padroes.comportamentais.observer.TipoEvento;
 
-/**
- * Canal de WhatsApp: usa a formatação do aplicativo (*negrito*) e envia o conteúdo completo.
- *
- * @note Papel no Padrão: Concrete Product (Factory Method) / Concrete Observer (Observer)
- */
+
 public class CanalWhatsApp extends CanalNotificacao {
 
     CanalWhatsApp(String destino) {

@@ -3,11 +3,7 @@ package br.com.alertaboleto.padroes.comportamentais.chain;
 import br.com.alertaboleto.dominio.Boleto;
 import br.com.alertaboleto.dominio.ResultadoAnalise;
 
-/**
- * O beneficiário (CNPJ) está na lista de empresas que o titular já reconhece?
- *
- * @note Papel no Padrão: Concrete Handler (Chain of Responsibility)
- */
+
 public class VerificadorBeneficiario extends VerificadorRisco {
 
     @Override

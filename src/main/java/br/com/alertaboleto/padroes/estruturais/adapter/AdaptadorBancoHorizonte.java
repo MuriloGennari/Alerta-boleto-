@@ -15,13 +15,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Traduz a API em inglês do Banco Horizonte para a interface {@link FonteDeBoletos}.
- * Converte CPF String -> long, Double -> BigDecimal (dinheiro nunca em double!),
- * datas ISO, status OPEN/PAID e categorias.
- *
- * @note Papel no Padrão: Adapter (Object Adapter - por composição)
- */
+
 public class AdaptadorBancoHorizonte implements FonteDeBoletos {
 
     private final ApiBancoHorizonte api;

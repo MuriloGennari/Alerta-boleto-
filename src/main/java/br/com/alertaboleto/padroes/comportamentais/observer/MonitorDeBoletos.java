@@ -6,13 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Central que publica os eventos dos boletos. Ela NÃO conhece e-mail, SMS nem
- * WhatsApp: apenas mantém uma lista de observadores inscritos e avisa todos.
- * Assim, um novo canal (ex.: Telegram) pode ser criado sem alterar esta classe.
- *
- * @note Papel no Padrão: Subject / Concrete Subject (Observer)
- */
+
 public class MonitorDeBoletos {
 
     private final List<ObservadorBoleto> observadores = new ArrayList<>();

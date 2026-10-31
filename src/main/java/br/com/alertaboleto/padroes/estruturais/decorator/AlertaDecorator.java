@@ -1,12 +1,6 @@
 package br.com.alertaboleto.padroes.estruturais.decorator;
 
-/**
- * Base de todos os adicionais de alerta. Guarda uma referência para o alerta
- * embrulhado e, por padrão, apenas repassa as chamadas para ele.
- * Cada decorador concreto sobrescreve só o que quer enriquecer.
- *
- * @note Papel no Padrão: Decorator (classe abstrata base)
- */
+
 public abstract class AlertaDecorator implements Alerta {
 
     protected final Alerta alertaEmbrulhado;

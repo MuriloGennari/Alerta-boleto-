@@ -1,22 +1,17 @@
 package br.com.alertaboleto.dominio;
 
-/**
- * Regras de negócio do CPF: validação dos dígitos verificadores,
- * formatação e mascaramento (LGPD - não exibir o CPF completo em alertas).
- */
+
 public final class Cpf {
 
     private Cpf() {
     }
 
-    /** Remove pontos, traço e espaços. */
     public static String somenteDigitos(String cpf) {
         return cpf == null ? "" : cpf.replaceAll("\\D", "");
     }
 
-    /**
-     * Valida o CPF pelo algoritmo oficial dos dois dígitos verificadores (módulo 11).
-     */
+
+
     public static boolean valido(String cpf) {
         String d = somenteDigitos(cpf);
         if (d.length() != 11 || d.chars().distinct().count() == 1) {
@@ -34,7 +29,7 @@ public final class Cpf {
         return resto == 10 ? 0 : resto;
     }
 
-    /** 52998224725 -> 529.982.247-25 */
+
     public static String formatar(String cpf) {
         String d = somenteDigitos(cpf);
         if (d.length() != 11) {
@@ -43,7 +38,7 @@ public final class Cpf {
         return d.substring(0, 3) + "." + d.substring(3, 6) + "." + d.substring(6, 9) + "-" + d.substring(9);
     }
 
-    /** 52998224725 -> ***.982.247-** (exibição segura em notificações). */
+
     public static String mascarar(String cpf) {
         String d = somenteDigitos(cpf);
         if (d.length() != 11) {

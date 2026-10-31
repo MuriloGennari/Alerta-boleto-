@@ -5,12 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Observador "silencioso" que registra todos os eventos para auditoria.
- * Mostra que o Observer não é só para notificações: qualquer interessado pode se inscrever.
- *
- * @note Papel no Padrão: Concrete Observer
- */
+
 public class HistoricoAlertasObserver implements ObservadorBoleto {
 
     private static final DateTimeFormatter HORA = DateTimeFormatter.ofPattern("dd/MM HH:mm:ss");

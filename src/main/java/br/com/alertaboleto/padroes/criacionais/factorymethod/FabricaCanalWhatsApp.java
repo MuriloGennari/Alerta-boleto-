@@ -1,8 +1,6 @@
 package br.com.alertaboleto.padroes.criacionais.factorymethod;
 
-/**
- * @note Papel no Padrão: Concrete Creator (Factory Method) - cria {@link CanalWhatsApp}.
- */
+
 public class FabricaCanalWhatsApp extends FabricaCanalNotificacao {
 
     @Override
@@ -10,7 +8,7 @@ public class FabricaCanalWhatsApp extends FabricaCanalNotificacao {
         return new CanalWhatsApp(destino);
     }
 
-    /** WhatsApp usa o formato internacional: +55 + DDD + número. */
+
     @Override
     protected String normalizarDestino(String destino) {
         String d = destino.replaceAll("\\D", "");

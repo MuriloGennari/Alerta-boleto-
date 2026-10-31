@@ -5,12 +5,7 @@ import br.com.alertaboleto.dominio.Cpf;
 
 import java.time.LocalDate;
 
-/**
- * Alerta básico: só os dados essenciais do boleto, sem nenhum "adicional".
- * É o objeto que fica no centro, sendo embrulhado pelos decoradores.
- *
- * @note Papel no Padrão: Concrete Component (Decorator)
- */
+
 public class AlertaBoleto implements Alerta {
 
     private final Boleto boleto;

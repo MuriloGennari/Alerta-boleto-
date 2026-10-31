@@ -1,8 +1,6 @@
 package br.com.alertaboleto.padroes.criacionais.factorymethod;
 
-/**
- * @note Papel no Padrão: Concrete Creator (Factory Method) - cria {@link CanalSms}.
- */
+
 public class FabricaCanalSms extends FabricaCanalNotificacao {
 
     @Override
@@ -10,7 +8,7 @@ public class FabricaCanalSms extends FabricaCanalNotificacao {
         return new CanalSms(destino);
     }
 
-    /** Remove tudo que não é dígito e formata como (41) 99999-9999. */
+
     @Override
     protected String normalizarDestino(String destino) {
         String d = destino.replaceAll("\\D", "");
@@ -20,7 +18,6 @@ public class FabricaCanalSms extends FabricaCanalNotificacao {
         return d;
     }
 
-    /** Celular brasileiro: DDD (11 a 99) + 9 + 8 dígitos. */
     @Override
     protected boolean destinoValido(String destino) {
         return destino.matches("\\([1-9][1-9]\\) 9\\d{4}-\\d{4}");

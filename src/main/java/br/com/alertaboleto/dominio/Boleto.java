@@ -7,14 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 
-/**
- * Entidade central do domínio: um boleto emitido contra o CPF do titular.
- * <p>
- * Repare que o construtor tem MUITOS parâmetros (construtor "telescópico"). Criar um
- * boleto direto por aqui é confuso e propenso a erro (trocar a ordem de dois Strings,
- * por exemplo). Por isso a criação é feita pelo {@code BoletoBuilder}, que valida
- * as regras antes de chamar este construtor.
- */
+
 public class Boleto {
 
     public static final DateTimeFormatter DATA_BR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -59,9 +52,7 @@ public class Boleto {
         this.status = status;
     }
 
-    // ------------------------------------------------------------------ regras de negócio
 
-    /** Dias de atraso em relação à data informada (0 se ainda está no prazo). */
     public long diasDeAtraso(LocalDate hoje) {
         return Math.max(0, ChronoUnit.DAYS.between(vencimento, hoje));
     }
@@ -117,7 +108,7 @@ public class Boleto {
         analise = null;
     }
 
-    // ------------------------------------------------------------------ exibição
+
 
     public static String moeda(BigDecimal v) {
         return MOEDA.format(v);
@@ -141,11 +132,11 @@ public class Boleto {
         return s.length() <= max ? s : s.substring(0, max - 3) + "...";
     }
 
-    // ------------------------------------------------------------------ getters / setters
+
 
     public int getId() { return id; }
 
-    /** O ID é atribuído uma única vez, pelo repositório, quando o boleto entra no sistema. */
+
     public void registrarId(int id) {
         if (this.id != 0) {
             throw new IllegalStateException("Boleto já possui ID.");

@@ -1,8 +1,6 @@
 package br.com.alertaboleto.dominio;
 
-/**
- * Natureza da cobrança representada pelo boleto.
- */
+
 public enum TipoBoleto {
     CONSUMO("Conta de consumo (luz, água, internet)"),
     CONDOMINIO("Condomínio"),

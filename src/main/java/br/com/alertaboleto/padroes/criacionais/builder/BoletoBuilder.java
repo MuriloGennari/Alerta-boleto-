@@ -12,18 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Monta um {@link Boleto} passo a passo, com validação das regras de negócio no final.
- * <p>
- * <b>Problema resolvido:</b> um boleto tem 14 informações, várias opcionais e cada banco
- * entrega um subconjunto diferente delas. Com o Builder cada origem (adaptadores de banco,
- * cadastro manual no menu) informa só o que tem, o Builder aplica valores padrão
- * (nosso número, linha digitável, data de emissão...) e garante que nenhum boleto inválido
- * (CPF errado, valor zerado, linha digitável fora do padrão) entre no sistema.
- *
- * @note Papel no Padrão: Builder (Concrete Builder) - o "Director" são os clientes que
- *       encadeiam as chamadas: os Adapters de banco e o cadastro manual do Main.
- */
+
 public class BoletoBuilder {
 
     private static int contadorNossoNumero = 1000;
@@ -48,7 +37,7 @@ public class BoletoBuilder {
     private BoletoBuilder() {
     }
 
-    /** Ponto de partida da construção. */
+
     public static BoletoBuilder novoBoleto() {
         return new BoletoBuilder();
     }
@@ -111,11 +100,7 @@ public class BoletoBuilder {
         return this;
     }
 
-    /**
-     * Etapa final: aplica valores padrão, valida tudo e só então cria o objeto.
-     *
-     * @throws IllegalArgumentException com a lista de todos os erros encontrados
-     */
+
     public Boleto construir() {
         aplicarPadroes();
 

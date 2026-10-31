@@ -2,11 +2,7 @@ package br.com.alertaboleto.padroes.criacionais.factorymethod;
 
 import br.com.alertaboleto.padroes.comportamentais.observer.EventoBoleto;
 
-/**
- * Canal de e-mail: aceita mensagem completa, com assunto e corpo detalhado.
- *
- * @note Papel no Padrão: Concrete Product (Factory Method) / Concrete Observer (Observer)
- */
+
 public class CanalEmail extends CanalNotificacao {
 
     CanalEmail(String destino) {

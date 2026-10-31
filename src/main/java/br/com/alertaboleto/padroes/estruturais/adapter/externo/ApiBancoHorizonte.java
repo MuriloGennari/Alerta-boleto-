@@ -6,13 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Simula a API de uma fintech fictícia (Banco Horizonte, código 802).
- * Interface incompatível com a nossa: recebe o CPF como {@code long},
- * devolve objetos {@link CobrancaHorizonte} com nomes em inglês.
- *
- * @note Papel no Padrão: Adaptee (Adapter)
- */
+
 public class ApiBancoHorizonte {
 
     public static final String BANK_CODE = "802";

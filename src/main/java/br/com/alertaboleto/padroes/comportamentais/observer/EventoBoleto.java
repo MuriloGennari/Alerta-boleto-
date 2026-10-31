@@ -5,12 +5,7 @@ import br.com.alertaboleto.padroes.estruturais.decorator.Alerta;
 
 import java.time.LocalDateTime;
 
-/**
- * Dados enviados pelo Subject a cada Observer: o que aconteceu, com qual boleto
- * e a mensagem de alerta já montada (decorada).
- *
- * @note Papel no Padrão: Classe de apoio do Observer (dados do evento enviados do Subject aos Observers)
- */
+
 public class EventoBoleto {
 
     private final TipoEvento tipo;

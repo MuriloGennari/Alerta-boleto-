@@ -3,13 +3,7 @@ package br.com.alertaboleto.padroes.estruturais.decorator;
 import br.com.alertaboleto.dominio.ResultadoAnalise;
 import br.com.alertaboleto.util.Log;
 
-/**
- * Adicional que coloca o resultado da análise anti-golpe no alerta.
- * Quando o boleto é suspeito, ele "toma conta" do alerta: muda o título,
- * coloca o aviso NO TOPO da mensagem e eleva a prioridade ao máximo.
- *
- * @note Papel no Padrão: Concrete Decorator
- */
+
 public class AvisoGolpeDecorator extends AlertaDecorator {
 
     private final ResultadoAnalise analise;

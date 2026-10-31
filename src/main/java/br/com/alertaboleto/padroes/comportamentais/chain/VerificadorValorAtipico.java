@@ -5,12 +5,7 @@ import br.com.alertaboleto.dominio.ResultadoAnalise;
 
 import java.math.BigDecimal;
 
-/**
- * Valor muito acima do padrão de gastos do titular (mais de 3x a média dos boletos
- * de beneficiários conhecidos) é um sinal de alerta.
- *
- * @note Papel no Padrão: Concrete Handler (Chain of Responsibility)
- */
+
 public class VerificadorValorAtipico extends VerificadorRisco {
 
     private static final BigDecimal FATOR = new BigDecimal("3");

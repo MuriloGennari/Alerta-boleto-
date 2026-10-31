@@ -1,10 +1,6 @@
 package br.com.alertaboleto.padroes.comportamentais.observer;
 
-/**
- * Tipos de acontecimento que o monitor de boletos publica para os observadores.
- *
- * @note Papel no Padrão: Classe de apoio do Observer (tipos de evento publicados pelo Subject)
- */
+
 public enum TipoEvento {
     BOLETO_VENCIDO("Boleto vencido"),
     LEMBRETE_VENCIMENTO("Lembrete de vencimento"),

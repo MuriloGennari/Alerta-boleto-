@@ -8,26 +8,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Simula o sistema LEGADO de um banco fictício (Banco Aurora, código 801).
- * <p>
- * Ele não pode ser alterado (é "de terceiros") e tem uma interface totalmente
- * incompatível com o nosso sistema:
- * <ul>
- *   <li>devolve um array de Strings separadas por ponto e vírgula;</li>
- *   <li>usa a nomenclatura antiga de boleto: CEDENTE (quem cobra) e SACADO (quem paga);</li>
- *   <li>valores em CENTAVOS e datas no formato ddMMyyyy;</li>
- *   <li>a busca é "aproximada" e às vezes traz boletos de homônimos (outro CPF!).</li>
- * </ul>
- *
- * @note Papel no Padrão: Adaptee (Adapter)
- */
+
 public class SistemaLegadoBancoAurora {
 
     public static final String CODIGO_BANCO = "801";
     private static final DateTimeFormatter DATA = DateTimeFormatter.ofPattern("ddMMyyyy");
 
-    /** Layout: NOSSO_NUM;LINHA;CEDENTE;CNPJ_CEDENTE;CPF_SACADO;NOME_SACADO;VALOR_CENT;EMISSAO;VENCTO;ESPECIE */
+
     public String[] consultarTitulosSacado(String documentoSacado, String nomeSacado) {
         LocalDate hoje = LocalDate.now();
         List<String> linhas = new ArrayList<>();

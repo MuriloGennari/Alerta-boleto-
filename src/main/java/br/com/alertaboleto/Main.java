@@ -31,16 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Ponto de entrada: menu interativo no terminal.
- * <p>
- * O Main só faz a interface com o usuário (ler opções, exibir resultados). Toda regra
- * de negócio fica no {@link ServicoAlertaBoletos} e nos padrões. Ele também é o lugar
- * onde as peças são "montadas" (composição manual, já que não usamos Spring).
- */
+
 public class Main {
 
-    private static final String CPF_EXEMPLO = "529.982.247-25"; // CPF de teste válido (gerado, não pertence a ninguém)
+    private static final String CPF_EXEMPLO = "529.982.247-25";
     private static final String NOME_EXEMPLO = "Maria Aparecida Souza";
 
     private final Scanner scanner = new Scanner(System.in);
@@ -51,7 +45,7 @@ public class Main {
 
     public Main() {
         MonitorDeBoletos monitor = new MonitorDeBoletos();
-        // Os bancos são acessados SEMPRE pela interface FonteDeBoletos (Adapter)
+
         List<FonteDeBoletos> fontes = List.of(
                 new AdaptadorBancoAurora(new SistemaLegadoBancoAurora()),
                 new AdaptadorBancoHorizonte(new ApiBancoHorizonte()));
@@ -62,7 +56,7 @@ public class Main {
         new Main().executar();
     }
 
-    // =================================================================== loop principal
+
 
     private void executar() {
         banner();
@@ -101,36 +95,36 @@ public class Main {
     }
 
     private void banner() {
-        System.out.println("==================================================================");
+
         System.out.println("   ALERTA BOLETO - monitoramento de boletos no seu CPF");
         System.out.println("   Atrasos, lembretes e detecção de boletos falsos");
         System.out.println("   Linhas [PADRÃO: ...] mostram os Design Patterns em ação");
-        System.out.println("==================================================================");
+
     }
 
     private void mostrarMenu() {
         System.out.println();
-        System.out.println("------------------------------------------------------------------");
+
         System.out.println(" Titular: " + servico.getNomeTitular() + "  CPF " + Cpf.formatar(servico.getCpfTitular())
                 + "   | Data do sistema: " + servico.getHoje().format(Boleto.DATA_BR));
         System.out.println(" Boletos: " + servico.listar().size()
                 + "   | Canais de alerta ativos: " + canaisAtivos().size());
-        System.out.println("------------------------------------------------------------------");
+
         System.out.println("  1 - Alterar titular (nome e CPF)");
-        System.out.println("  2 - Cadastrar canal de alerta ............ [Factory Method + Observer]");
-        System.out.println("  3 - Remover canal de alerta .............. [Observer]");
-        System.out.println("  4 - Sincronizar boletos com os bancos ..... [Adapter + Builder]");
-        System.out.println("  5 - Cadastrar boleto manualmente .......... [Builder]");
-        System.out.println("  6 - Executar varredura de atrasos/golpes .. [Chain + Decorator + Observer]");
+        System.out.println("  2 - Cadastrar canal de alerta [Factory Method + Observer]");
+        System.out.println("  3 - Remover canal de alerta  [Observer]");
+        System.out.println("  4 - Sincronizar boletos com os bancos  [Adapter + Builder]");
+        System.out.println("  5 - Cadastrar boleto manualmente  [Builder]");
+        System.out.println("  6 - Executar varredura de atrasos/golpes  [Chain + Decorator + Observer]");
         System.out.println("  7 - Listar boletos");
-        System.out.println("  8 - Montar alerta personalizado ........... [Decorator]");
+        System.out.println("  8 - Montar alerta personalizado  [Decorator]");
         System.out.println("  9 - Ações sobre um boleto (pagar/contestar/reconhecer) [Observer]");
         System.out.println(" 10 - Avançar o tempo (simular dias passando)");
-        System.out.println(" 11 - Ver histórico de alertas ............. [Observer]");
+        System.out.println(" 11 - Ver histórico de alertas  [Observer]");
         System.out.println("  0 - Sair");
     }
 
-    // =================================================================== opções do menu
+
 
     private void configurarTitular() {
         System.out.println("Informe o titular que será monitorado (ENTER usa o exemplo).");
@@ -157,8 +151,8 @@ public class Main {
         FabricaCanalNotificacao fabrica = fabricas.get(lerInt("Qual canal? ", 1, fabricas.size()) - 1);
         String destino = lerTexto("Destino (" + fabrica.exemploDestino() + "): ");
 
-        CanalNotificacao canal = fabrica.novoCanal(destino); // Factory Method decide a classe concreta
-        servico.getMonitor().inscrever(canal);               // e o canal vira um Observer do monitor
+        CanalNotificacao canal = fabrica.novoCanal(destino);
+        servico.getMonitor().inscrever(canal);
         System.out.println("   Canal ativo! Os próximos alertas também irão para " + canal.descricao());
     }
 
@@ -230,7 +224,7 @@ public class Main {
         }
         ServicoAlertaBoletos.ResumoVarredura r = servico.executarVarredura();
         System.out.println();
-        System.out.println("   === Resumo: " + r.analisados() + " analisado(s) | " + r.vencidos() + " vencido(s) | "
+        System.out.println("   === Resumo: " + r.analisados() + " analisado(s) | " + r.vencidos() + " vencido(s)  "
                 + r.suspeitos() + " suspeito(s) de golpe | " + r.lembretes() + " lembrete(s)");
         if (r.analisados() == 0) {
             System.out.println("   Nenhum boleto em aberto para analisar (os já alertados não são reenviados).");

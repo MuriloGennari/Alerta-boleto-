@@ -3,12 +3,7 @@ package br.com.alertaboleto.padroes.criacionais.factorymethod;
 import br.com.alertaboleto.padroes.comportamentais.observer.EventoBoleto;
 import br.com.alertaboleto.padroes.comportamentais.observer.TipoEvento;
 
-/**
- * Canal de SMS: limite de 160 caracteres e custo por envio. Por isso só dispara
- * para eventos importantes (prioridade >= 4 ou suspeita de golpe) e manda apenas o título.
- *
- * @note Papel no Padrão: Concrete Product (Factory Method) / Concrete Observer (Observer)
- */
+
 public class CanalSms extends CanalNotificacao {
 
     private static final int LIMITE_CARACTERES = 160;

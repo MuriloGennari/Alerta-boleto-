@@ -1,8 +1,6 @@
 package br.com.alertaboleto.padroes.criacionais.factorymethod;
 
-/**
- * @note Papel no Padrão: Concrete Creator (Factory Method) - cria {@link CanalEmail}.
- */
+
 public class FabricaCanalEmail extends FabricaCanalNotificacao {
 
     @Override

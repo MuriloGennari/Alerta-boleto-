@@ -32,14 +32,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-/**
- * Camada de serviço: orquestra o caso de uso "monitorar boletos do meu CPF".
- * <p>
- * É aqui que os padrões trabalham juntos:
- * Adapters buscam -> Builder monta -> Chain analisa -> Decorator monta a mensagem
- * -> Observer distribui para os canais criados pelo Factory Method.
- * O Main apenas chama estes métodos; ele não contém regra de negócio.
- */
+
+
 public class ServicoAlertaBoletos {
 
     private static final int DIAS_LEMBRETE = 3;
@@ -65,7 +59,7 @@ public class ServicoAlertaBoletos {
                 "56.789.012/0001-34", "67.890.123/0001-45", "78.901.234/0001-56"));
     }
 
-    /** Ordem dos elos: do mais decisivo (pode encerrar) para os complementares. */
+
     private VerificadorRisco montarCadeiaAntiGolpe() {
         VerificadorRisco primeiro = new VerificadorTitularidade();
         primeiro.encadear(new VerificadorCodigoBanco())
@@ -75,7 +69,7 @@ public class ServicoAlertaBoletos {
         return primeiro;
     }
 
-    // ================================================================= titular
+
 
     public void definirTitular(String nome, String cpf) {
         if (nome == null || nome.isBlank()) {
@@ -93,9 +87,9 @@ public class ServicoAlertaBoletos {
         }
     }
 
-    // ================================================================= Adapter + Builder
 
-    /** Consulta todas as fontes (bancos) pela mesma interface, sem saber o formato de cada uma. */
+
+
     public int sincronizar() {
         int novos = 0;
         for (FonteDeBoletos fonte : fontes) {
@@ -119,7 +113,7 @@ public class ServicoAlertaBoletos {
 
     // ================================================================= Chain + Decorator + Observer
 
-    /** Resultado resumido de uma varredura, para o Main exibir. */
+
     public record ResumoVarredura(int analisados, int vencidos, int suspeitos, int lembretes) {
     }
 
@@ -155,7 +149,7 @@ public class ServicoAlertaBoletos {
         return new ResumoVarredura(analisados, vencidos, suspeitos, lembretes);
     }
 
-    /** Executa a cadeia anti-golpe em um boleto e guarda o resultado nele. */
+
     public ResultadoAnalise analisarRisco(Boleto boleto, ContextoAnalise contexto) {
         Log.padrao("Chain of Responsibility", "Iniciando cadeia anti-golpe no boleto #" + boleto.getId());
         ResultadoAnalise resultado = new ResultadoAnalise();
@@ -179,12 +173,7 @@ public class ServicoAlertaBoletos {
         return new ContextoAnalise(cpfTitular, cnpjsConhecidos, media);
     }
 
-    /**
-     * Política padrão de montagem do alerta (quais "adicionais" cada situação recebe):
-     * suspeito -> aviso de golpe (e NUNCA o código de pagamento);
-     * vencido  -> encargos + orientação de negociação + código para pagar;
-     * a vencer -> apenas o código para pagar.
-     */
+
     public Alerta montarAlertaPadrao(Boleto boleto) {
         Log.padrao("Decorator", "Montando alerta do boleto #" + boleto.getId() + " a partir do AlertaBoleto básico:");
         Alerta alerta = new AlertaBoleto(boleto, hoje);
@@ -198,7 +187,6 @@ public class ServicoAlertaBoletos {
         return new CodigoPagamentoDecorator(alerta, boleto);
     }
 
-    /** O usuário escolhe quais adicionais empilhar (demonstração livre do Decorator). */
     public Alerta montarAlertaPersonalizado(Boleto boleto, boolean encargos, boolean negociacao,
                                             boolean antiGolpe, boolean codigo) {
         if (antiGolpe && boleto.getAnalise() == null) {
@@ -217,7 +205,7 @@ public class ServicoAlertaBoletos {
         return calculadora.calcular(boleto, hoje);
     }
 
-    // ================================================================= ações do titular
+
 
     public void registrarPagamento(Boleto boleto) {
         CalculadoraEncargos.Encargos e = calculadora.calcular(boleto, hoje);
@@ -245,13 +233,13 @@ public class ServicoAlertaBoletos {
         cnpjsConhecidos.add(boleto.getBeneficiarioCnpj());
     }
 
-    // ================================================================= simulação de tempo
+
 
     public void avancarDias(int dias) {
         hoje = hoje.plusDays(dias);
     }
 
-    // ================================================================= consultas
+
 
     public List<Boleto> listar() {
         return repositorio.todos();

@@ -4,13 +4,7 @@ import br.com.alertaboleto.dominio.Boleto;
 import br.com.alertaboleto.dominio.Cpf;
 import br.com.alertaboleto.dominio.ResultadoAnalise;
 
-/**
- * Primeiro elo: o CPF do pagador do boleto é realmente o CPF do titular?
- * Se não for (homônimo, CPF digitado errado, fraude de identidade), o risco é máximo
- * e NÃO faz sentido continuar as demais análises - a cadeia é interrompida aqui.
- *
- * @note Papel no Padrão: Concrete Handler (Chain of Responsibility)
- */
+
 public class VerificadorTitularidade extends VerificadorRisco {
 
     @Override

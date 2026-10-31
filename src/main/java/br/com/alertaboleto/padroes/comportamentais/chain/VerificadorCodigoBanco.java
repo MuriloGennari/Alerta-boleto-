@@ -4,12 +4,7 @@ import br.com.alertaboleto.dominio.Boleto;
 import br.com.alertaboleto.dominio.LinhaDigitavel;
 import br.com.alertaboleto.dominio.ResultadoAnalise;
 
-/**
- * Os 3 primeiros dígitos da linha digitável devem ser o código do banco que diz ter
- * emitido o boleto. Divergência é o sinal clássico de boleto adulterado.
- *
- * @note Papel no Padrão: Concrete Handler (Chain of Responsibility)
- */
+
 public class VerificadorCodigoBanco extends VerificadorRisco {
 
     @Override
